@@ -484,6 +484,46 @@ testTab:AddButton({
             for i = 1, 6 do
                 executeActions(actions)
             end
+        elseif selectedAnimal == "Elephant" then
+            -- Define actions for Elephant
+            local actions = {
+                {"elephant", "elephant6", "elephantAnim"},
+                {"buyPlot", "1"}
+            }
+            -- Execute actions for horse
+            for i = 1, 6 do
+                executeActions(actions)
+            end
+        elseif selectedAnimal == "monkey" then
+            -- Define actions for monkey
+            local actions = {
+                {"monkey", "monkey7", "monkeyAnim"},
+                {"buyPlot", "1"}
+            }
+            -- Execute actions for horse
+            for i = 1, 6 do
+                executeActions(actions)
+            end
+        elseif selectedAnimal == "baby penguin" then
+            -- Define actions for penguin
+            local actions = {
+                {"baby_penguin", "pixel", "babypenguinAnim"},
+                {"buyPlot", "1"}
+            }
+            -- Execute actions for horse
+            for i = 1, 6 do
+                executeActions(actions)
+            end
+        elseif selectedAnimal == "axolotl" then
+            -- Define actions for axolotl
+            local actions = {
+                {"axolotl", "axolotl1", "axolotl_Anim"},
+                {"buyPlot", "1"}
+            }
+            -- Execute actions for horse
+            for i = 1, 6 do
+                executeActions(actions)
+            end
         else
             print("No valid animal selected.")
         end
