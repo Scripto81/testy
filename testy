@@ -443,7 +443,7 @@ end
 testTab:AddDropdown({
     Name = "AnimalDropdown",
     Default = "",
-    Options = {"Giraffe", "Horse", "fox"},
+    Options = {"Giraffe", "Horse", "fox", "Elephant", "monkey", "baby penguin", "axolotl"},
     Callback = function(selectedOption)
         selectedAnimal = selectedOption
         print("Selected animal:", selectedAnimal)
