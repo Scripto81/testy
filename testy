@@ -443,7 +443,7 @@ end
 testTab:AddDropdown({
     Name = "AnimalDropdown",
     Default = "",
-    Options = {"Giraffe", "Horse"},
+    Options = {"Giraffe", "Horse", "fox"},
     Callback = function(selectedOption)
         selectedAnimal = selectedOption
         print("Selected animal:", selectedAnimal)
@@ -468,6 +468,16 @@ testTab:AddButton({
             -- Define actions for horse
             local actions = {
                 {"newhorse", "horse1", "newhorseAnim"},
+                {"buyPlot", "1"}
+            }
+            -- Execute actions for horse
+            for i = 1, 6 do
+                executeActions(actions)
+            end
+        elseif selectedAnimal == "fox" then
+            -- Define actions for fox
+            local actions = {
+                {"fox", "fox1", "foxAnim"},
                 {"buyPlot", "1"}
             }
             -- Execute actions for horse
