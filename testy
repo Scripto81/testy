@@ -460,14 +460,17 @@ testTab:AddButton({
                 {"giraffe", "giraffe1", "giraffeAnim"},
                 {"buyPlot", "1"}
             }
-            executeActions(actions)
+            -- Execute actions for giraffe
+            for i = 1, 6 do
+                executeActions(actions)
+            end
         elseif selectedAnimal == "Horse" then
             -- Define actions for horse
             local actions = {
                 {"newhorse", "horse1", "newhorseAnim"},
                 {"buyPlot", "1"}
             }
-            -- Spam both actions six times simultaneously
+            -- Execute actions for horse
             for i = 1, 6 do
                 executeActions(actions)
             end
