@@ -477,7 +477,7 @@ testTab:AddButton({
         elseif selectedAnimal == "fox" then
             -- Define actions for fox
             local actions = {
-                {"fox", "fox1", "foxAnim"},
+                {"fox", "orange_fox", "foxAnim"},
                 {"buyPlot", "1"}
             }
             -- Execute actions for horse
