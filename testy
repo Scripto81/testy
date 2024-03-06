@@ -417,11 +417,39 @@ local testTab = Window:MakeTab({
 
 local selectedAnimal = ""
 
+-- Define actions for each animal
+local animalActions = {
+    Giraffe = {
+        {"giraffe", "giraffe1", "giraffeAnim"},
+        {"buyPlot", "1"}
+    },
+    Eagle = {
+        {"eagle", "eagle1", "eagleAnim"},
+        {"buyPlot", "1"}
+    },
+    Horse = {
+        {"newhorse", "horse1", "newhorseAnim"},
+        {"buyPlot", "1"}
+    },
+    Lion = {
+        {"lion", "lion1", "lionAnim"},
+        {"buyPlot", "1"}
+    },
+    Elephant = {
+        {"elephant", "elephant1", "elephantAnim"},
+        {"buyPlot", "1"}
+    },
+    Zebra = {
+        {"zebra", "zebra1", "zebraAnim"},
+        {"buyPlot", "1"}
+    }
+}
+
 -- Dropdown setup (assuming you already have this part)
 testTab:AddDropdown({
     Name = "AnimalDropdown",
     Default = "",
-    Options = {"Giraffe", "Eagle"},
+    Options = {"Giraffe", "Eagle", "Horse", "Lion", "Elephant", "Zebra"},
     Callback = function(selectedOption)
         selectedAnimal = selectedOption
         print("Selected animal:", selectedAnimal)
@@ -432,88 +460,19 @@ testTab:AddDropdown({
 testTab:AddButton({
     Name = "PerformAction",
     Callback = function()
-        if selectedAnimal == "Giraffe" then
-            -- Define the actions for giraffe
-            local actions = {
-                {
-                    [1] = "giraffe",
-                    [2] = "giraffe1",
-                    [3] = "giraffeAnim"
-                },
-                {
-                    [1] = "buyPlot",
-                    [2] = "1"
-                }
-            }
-            
-            -- Define the functions to execute the actions
-            local function spawnGiraffe()
-                local args = actions[1]
-                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SpawnEvent"):FireServer(unpack(args))
-            end
-            
-            local function buyPlot()
-                local args = actions[2]
-                game:GetService("ReplicatedStorage"):WaitForChild("PlotSystemRE"):FireServer(unpack(args))
-            end
-            
-            -- Function to execute both actions simultaneously
-            local function executeActions()
+        local actions = animalActions[selectedAnimal]
+        if actions then
+            -- Execute actions for the selected animal
+            for _, action in ipairs(actions) do
                 spawn(function()
-                    spawnGiraffe()
-                end)
-                
-                spawn(function()
-                    buyPlot()
+                    game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SpawnEvent"):FireServer(unpack(action))
                 end)
             end
-            
-            -- Execute actions
-            executeActions()
-        elseif selectedAnimal == "Eagle" then
-            -- Define the actions for eagle
-            local actions = {
-                {
-                    [1] = "eagle",
-                    [2] = "eagle1",
-                    [3] = "eagleAnim"
-                },
-                {
-                    [1] = "buyPlot",
-                    [2] = "1"
-                }
-            }
-            
-            -- Define the functions to execute the actions
-            local function spawnEagle()
-                local args = actions[1]
-                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SpawnEvent"):FireServer(unpack(args))
-            end
-            
-            local function buyPlot()
-                local args = actions[2]
-                game:GetService("ReplicatedStorage"):WaitForChild("PlotSystemRE"):FireServer(unpack(args))
-            end
-            
-            -- Function to execute both actions simultaneously
-            local function executeActions()
-                spawn(function()
-                    spawnEagle()
-                end)
-                
-                spawn(function()
-                    buyPlot()
-                end)
-            end
-            
-            -- Execute actions
-            executeActions()
         else
             print("No valid animal selected.")
         end
     end
 })
-
 
 -- Create a new tab in the window
 local creditTab = Window:MakeTab({
