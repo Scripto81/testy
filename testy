@@ -410,63 +410,66 @@ InfoTab:AddDropdown({
 
 -- Create a new tab in the window
 local testTab = Window:MakeTab({
-  Name = "Testing",
+  Name = "testing",
   Icon = "rbxassetid://123456789",
   PremiumOnly = false,
 })
 
 local selectedAnimal = ""
 
--- Define actions for each animal
-local animalActions = {
-    Giraffe = {
-        {"giraffe", "giraffe1", "giraffeAnim"},
-        {"buyPlot", "1"}
-    },
-    Eagle = {
-        {"eagle", "eagle1", "eagleAnim"},
-        {"buyPlot", "1"}
-    },
-    Horse = {
-        {"newhorse", "horse1", "newhorseAnim"},
-        {"buyPlot", "1"}
-    },
-    Lion = {
-        {"lion", "lion1", "lionAnim"},
-        {"buyPlot", "1"}
-    },
-    Elephant = {
-        {"elephant", "elephant1", "elephantAnim"},
-        {"buyPlot", "1"}
-    },
-    Zebra = {
-        {"zebra", "zebra1", "zebraAnim"},
-        {"buyPlot", "1"}
-    }
-}
+-- Function to execute actions for a given animal
+local function executeActions(actions)
+    local function spawnAnimal()
+        local args = actions[1]
+        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SpawnEvent"):FireServer(unpack(args))
+    end
 
--- Dropdown setup (assuming you already have this part)
+    local function buyPlot()
+        local args = actions[2]
+        game:GetService("ReplicatedStorage"):WaitForChild("PlotSystemRE"):FireServer(unpack(args))
+    end
+
+    -- Execute actions simultaneously
+    spawn(function()
+        spawnAnimal()
+    end)
+
+    spawn(function()
+        buyPlot()
+    end)
+end
+
+-- Dropdown setup
 testTab:AddDropdown({
     Name = "AnimalDropdown",
     Default = "",
-    Options = {"Giraffe", "Eagle", "Horse", "Lion", "Elephant", "Zebra"},
+    Options = {"Giraffe", "Horse"},
     Callback = function(selectedOption)
         selectedAnimal = selectedOption
         print("Selected animal:", selectedAnimal)
-    end    
+    end
 })
 
--- Button setup (assuming you already have this part)
+-- Button setup
 testTab:AddButton({
     Name = "PerformAction",
     Callback = function()
-        local actions = animalActions[selectedAnimal]
-        if actions then
-            -- Execute actions for the selected animal
-            for _, action in ipairs(actions) do
-                spawn(function()
-                    game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SpawnEvent"):FireServer(unpack(action))
-                end)
+        if selectedAnimal == "Giraffe" then
+            -- Define actions for giraffe
+            local actions = {
+                {"giraffe", "giraffe1", "giraffeAnim"},
+                {"buyPlot", "1"}
+            }
+            executeActions(actions)
+        elseif selectedAnimal == "Horse" then
+            -- Define actions for horse
+            local actions = {
+                {"newhorse", "horse1", "newhorseAnim"},
+                {"buyPlot", "1"}
+            }
+            -- Spam both actions six times simultaneously
+            for i = 1, 6 do
+                executeActions(actions)
             end
         else
             print("No valid animal selected.")
