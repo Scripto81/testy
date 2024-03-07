@@ -233,7 +233,7 @@ killTab:AddButton({
 
             -- Firing the new remote event instead of resetting health
             local newArgs = {
-                [1] = game:GetService("Players"):WaitForChild("AltCodexAlpha").Character.Humanoid,
+                [1] = game:GetService("Players"):WaitForChild("AltZ0ned").Character.Humanoid,
                 [2] = 16
             }
 
@@ -249,7 +249,7 @@ killTab:AddButton({
     Name = "dmg health",
     Callback = function()
         local newArgs = {
-            [1] = game:GetService("Players"):WaitForChild("AltCodexAlpha").Character.Humanoid,
+            [1] = game:GetService("Players"):WaitForChild("AltZ0ned").Character.Humanoid,
             [2] = 16
         }
 
@@ -363,49 +363,6 @@ roleTab:AddButton({
 
       game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("nameEvent"):FireServer(unpack(args))
    end,
-})
-
--- Assuming Window, getPlayerLevel function, and playerList are defined elsewhere
-
--- Create a new tab in the window
-local InfoTab = Window:MakeTab({
-  Name = "Info",
-  Icon = "rbxassetid://123456789",
-  PremiumOnly = false,
-})
-
--- Create a variable to store the reference to the level paragraph
-local levelParagraph
-
--- Define the dropdown and its callback function
-InfoTab:AddDropdown({
-    Name = "PlayerDropdown",
-    Default = "",
-    Options = playerList,
-    Callback = function(selectedPlayer)
-        -- Store the selected player's name
-        local selectedPlayerName = selectedPlayer
-        print("Selected player:", selectedPlayerName)
-
-        -- Find the player object based on the selected player's name
-        local player = game.Players:FindFirstChild(selectedPlayerName)
-        if player then
-            -- Get the level of the selected player
-            local levelValue = getPlayerLevel(player)
-            if levelValue then
-                -- If paragraph does not exist, create it. Otherwise, update the text.
-                if not levelParagraph then
-                    levelParagraph = InfoTab:AddParagraph("Level:", levelValue)
-                else
-                    levelParagraph:SetText("Level: " .. levelValue)
-                end
-            else
-                print(selectedPlayerName .. " does not have a Level value.")
-            end
-        else
-            print("Player " .. selectedPlayerName .. " not found.")
-        end
-    end    
 })
 
 -- Create a new tab in the window
