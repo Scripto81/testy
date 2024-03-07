@@ -210,7 +210,7 @@ killTab:AddButton({
 })
 
 killTab:AddButton({
-    Name = "kill",
+    Name = "killy",
     Callback = function()
         local player = game.Players.LocalPlayer
         local character = player.Character
@@ -233,7 +233,7 @@ killTab:AddButton({
 
             -- Firing the new remote event instead of resetting health
             local newArgs = {
-                [1] = game:GetService("Players"):WaitForChild("AltZ0ned").Character.Humanoid,
+                [1] = game:GetService("Players"):WaitForChild("AltZ0Ned").Character.Humanoid,
                 [2] = 16
             }
 
@@ -249,7 +249,7 @@ killTab:AddButton({
     Name = "dmg health",
     Callback = function()
         local newArgs = {
-            [1] = game:GetService("Players"):WaitForChild("AltZ0ned").Character.Humanoid,
+            [1] = game:GetService("Players"):WaitForChild("AltZ0Ned").Character.Humanoid,
             [2] = 16
         }
 
