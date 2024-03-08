@@ -309,6 +309,13 @@ otherTab:AddButton({
   end,
 })
 
+otherTab:AddButton({
+  Name = "gamepass",
+  Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Scripto81/gamepass/main/gamepass"))()
+  end,
+})
+
 -- Create a new tab in the window
 local adminTab = Window:MakeTab({
   Name = "Admin / Hubs",
