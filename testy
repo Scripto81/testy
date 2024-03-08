@@ -24,7 +24,7 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 
 -- Create a new window with the specified settings
 local Window = OrionLib:MakeWindow({
-  Name = "DOS Library",
+  Name = "Infinity Library",
   HidePremium = false,
   SaveConfig = true,
   ConfigFolder = "MyConfigFolder",
