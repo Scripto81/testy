@@ -289,9 +289,9 @@ otherTab:AddButton({
 })
 
 otherTab:AddButton({
-  Name = "Iv admin",
+  Name = "zephyr",
   Callback = function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/BloodyBurns/Hex/main/Iv%20Admin%20v2.lua'))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Unknownlodfc/idk/main/Zephyr%20%7C%20Universal%20Fighting%20Games"))()
   end,
 })
 
