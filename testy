@@ -331,9 +331,9 @@ adminTab:AddButton({
 })
 
 adminTab:AddButton({
-  Name = "Nothing",
+  Name = "lolipop",
   Callback = function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/toldblock/GelatekHub/main/Main.lua'))()
+    loadstring(game:HttpGet("https://pastebin.com/raw/YC7UCdhh"))()
   end,
 })
 
