@@ -303,9 +303,9 @@ otherTab:AddButton({
 })
 
 otherTab:AddButton({
-  Name = "chatspy",
+  Name = "chat",
   Callback = function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/amagineLost/Jsjsbs/main/Chatspy", true))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Scripto81/chat/main/chat"))()
   end,
 })
 
@@ -367,7 +367,7 @@ roleTab:AddButton({
 
 -- Create a new tab in the window
 local testTab = Window:MakeTab({
-  Name = "testing",
+  Name = "God Mode",
   Icon = "rbxassetid://123456789",
   PremiumOnly = false,
 })
