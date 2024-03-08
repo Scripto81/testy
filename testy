@@ -333,7 +333,7 @@ adminTab:AddButton({
 adminTab:AddButton({
   Name = "lolipop",
   Callback = function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/YC7UCdhh"))()
+    loadstring(game:HttpGet("https://pastecode.dev/raw/41lsm69g/v7.9lollypophub_lulaslollipop",true))()
   end,
 })
 
